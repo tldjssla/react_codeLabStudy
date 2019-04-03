@@ -1,33 +1,15 @@
 import React from "react";
 
-const todos =[
-    "이것도 해야 되고1",
-    "저것도 해야 되고2",
-    "그것도 해야 되고3",
-    "언제 다 하나"
-];
-
-
-class TodoLi extends React.Component{
-    constructor(){
-        super();
-    }
-    render(){
-
-        const todoLi=todos.map((list,idx)=>{
-            return (
-                <li key={"todo"+idx}>
-                    <span>{list}</span>
-                    <span className="btn-container"><a href="#">삭제</a></span>
-                </li>
-            );
-         });
-        return (
-            <div>
-                {todoLi}
-            </div>
-        );
-    }
-}
+const TodoLi = (props) =>{
+    const onClickRemoveButton = ()=>{
+        props.handleRemovedData(props.list);
+    };
+  return (
+      <li>
+          <span>{props.list}</span>
+          <span className="btn-container"><a href="#" onClick={onClickRemoveButton}>삭제</a></span>
+      </li>
+  );
+};
 
 export default TodoLi;
